@@ -47,12 +47,16 @@ ResizablePopup::ResizablePopup(QWidget *parent)
     setMidLineWidth(2);
     setFrameStyle(QFrame::Box);
     setFrameShadow(QFrame::Raised);
+    //setAttribute(Qt::WA_ShowWithoutActivating);
+    //setFocusPolicy(Qt::NoFocus);
+    setWindowFlags(Qt::ToolTip);
 }
 
 void ResizablePopup::popup()
 {
     if (m_defaultSize != size())
         resize(m_defaultSize);
+    
     QPoint newPosition = QCursor::pos() - QPoint(30, 30);
     if (newPosition.x() < 0)
         newPosition.setX(0);
